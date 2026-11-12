@@ -76,3 +76,18 @@ resource "google_storage_bucket" "my_bucket" {
     force_destroy=true
 }
 
+////////////////
+# firewall rules 
+resource "google_compute_firewall" "allow_ssh" {
+  name    = "allow-ssh"
+  network = google_compute_network.learning_vpc.name
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  source_ranges = ["YOUR_PUBLIC_IP/32"]
+
+  target_tags = ["ssh-access"]
+}
