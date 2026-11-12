@@ -52,6 +52,7 @@ resource "google_compute_instance" "vm_instance" {
   name         = "my-vm-instance"
   machine_type = "e2-micro"
   zone         = "us-central1-c"
+  tags = ["ssh-access"]
 
   boot_disk {
     initialize_params {
@@ -87,7 +88,22 @@ resource "google_compute_firewall" "allow_ssh" {
     ports    = ["22"]
   }
 
-  source_ranges = ["YOUR_PUBLIC_IP/32"]
+  # source_ranges = ["14.98.4.46/32"]
+  source_ranges = ["27.7.113.0/32"]
 
   target_tags = ["ssh-access"]
+}
+
+////////////////////////
+# resource 4  terraform state bucket
+resource "google_storage_bucket" "terraform_state" {
+  name          = "gen-lang-client-0760529528-terraform-state"
+  location      = var.region
+  force_destroy = false
+
+  uniform_bucket_level_access = true
+
+  versioning {
+    enabled = true
+  }
 }
