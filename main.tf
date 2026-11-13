@@ -88,8 +88,8 @@ resource "google_compute_firewall" "allow_ssh" {
     ports    = ["22"]
   }
 
-  # source_ranges = ["14.98.4.46/32"]
-  source_ranges = ["27.7.113.0/32"]
+  source_ranges = ["14.98.4.46/32"]
+  # source_ranges = ["27.7.113.0/32"]
 
   target_tags = ["ssh-access"]
 }
