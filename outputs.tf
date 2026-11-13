@@ -12,3 +12,4 @@ output "region" {
 output "zone" {
   value = var.zone
 }
+
