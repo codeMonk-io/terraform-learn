@@ -13,6 +13,3 @@ output "zone" {
   value = var.zone
 }
 
-output "atlantis_test" {
-  value = "Atlantis is working"
-}
