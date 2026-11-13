@@ -53,6 +53,11 @@ resource "google_compute_instance" "vm_instance" {
   machine_type = "e2-micro"
   zone         = "us-central1-c"
   tags = ["ssh-access"]
+  
+  service_account {
+  email  = "atlantis-sa@gen-lang-client-0760529528.iam.gserviceaccount.com"
+  scopes = ["cloud-platform"]
+}
 
   boot_disk {
     initialize_params {
